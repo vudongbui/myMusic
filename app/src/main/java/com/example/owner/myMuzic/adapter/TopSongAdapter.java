@@ -9,7 +9,10 @@ import android.widget.TextView;
 
 import com.example.owner.myMuzic.R;
 import com.example.owner.myMuzic.databasees.TopSongModel;
+import com.example.owner.myMuzic.events.OnClickTopSong;
 import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,19 +59,31 @@ public class TopSongAdapter extends RecyclerView.Adapter<TopSongAdapter.TopSongV
         @BindView(R.id.tv_artist)
         TextView tvArtist;
 
+        View view;
         public TopSongViewHolder(View itemView){
             super(itemView);
             ButterKnife.bind(this,itemView);
+            view = itemView;
 
         }
 
-        public void setData(TopSongModel topSongModel) {
+        public void setData(final TopSongModel topSongModel) {
             Picasso.get()
                     .load(topSongModel.image)
                     .transform(new CropCircleTransformation())
                     .into(ivTopSong);
             tvSong.setText(topSongModel.song);
             tvArtist.setText(topSongModel.artist);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EventBus.getDefault().postSticky(new OnClickTopSong(topSongModel));
+                }
+            });
+
+
+
         }
     }
 }

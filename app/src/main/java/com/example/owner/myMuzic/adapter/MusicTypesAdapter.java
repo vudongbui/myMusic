@@ -80,7 +80,7 @@ public class MusicTypesAdapter extends RecyclerView.Adapter<MusicTypesAdapter.Mu
 
                     com.example.owner.myMuzic.utils.Utils.openFragment(
                             ((MainActivity) context).getSupportFragmentManager()
-                            ,R.id.ll_main
+                            ,R.id.ll_main1
                             ,topSongsFragment);
                 }
             });

@@ -4,6 +4,7 @@ package com.example.owner.myMuzic.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -57,6 +58,20 @@ public class MusicTypesFragment extends Fragment {
         musicTypesAdapter = new MusicTypesAdapter(musicTypeModels, getContext());
         rvMusicTypes.setAdapter(musicTypesAdapter);
         rvMusicTypes.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(
+                context,
+                2,
+                GridLayoutManager.VERTICAL,
+                false
+        );
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position % 3 == 0 ? 2 : 1;
+            }
+        });
+        rvMusicTypes.setLayoutManager(gridLayoutManager);
 
         context = getContext();
         loadData();

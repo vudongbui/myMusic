@@ -9,37 +9,99 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tl_main"
+        android:visibility="gone"
+        android:id="@+id/rl_mini">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_margin="8dp"
+                android:id="@+id/iv_top_song"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_top_song"
+                android:text="1111"
+                android:textColor="@color/colorTextWhite"
+                android:layout_marginTop="16dp"
+                android:textSize="14sp"
+                android:layout_marginEnd="8dp"
+                android:id="@+id/tv_song"
+                android:layout_toLeftOf="@id/fb_play"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_song"
+                android:layout_toRightOf="@+id/iv_top_song"
+                android:text="2222"
+                android:textColor="#81ffffff"
+                android:layout_marginEnd="8dp"
+                android:layout_toLeftOf="@id/fb_play"
+                android:textSize="10sp"
+                android:id="@+id/tv_artist"/>
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fb_play"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/fab_margin"
+                app:fabSize="mini"
+                android:src="@drawable/ic_pause_black_24dp"
+                />
+        </RelativeLayout>
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sb_mini"
+            android:thumb="@null"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_above="@+id/rl_mini"
+        android:id="@+id/ll_main1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tl_main"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_dashboard_black_24dp"/>
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_favorite_black_24dp"/>
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_archive_black_24dp"/>
+            android:background="@drawable/custom_gradient_text_4">
 
-    </android.support.design.widget.TabLayout>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_main"
-        android:layout_below="@+id/tl_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_dashboard_black_24dp"/>
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_favorite_black_24dp"/>
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_archive_black_24dp"/>
 
-    </android.support.v4.view.ViewPager>
+        </android.support.design.widget.TabLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_main"
+            android:layout_below="@+id/tl_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/iv_test"
-        android:src="@drawable/ic_play_circle_filled_black_24dp"/>
+        </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
 </RelativeLayout>

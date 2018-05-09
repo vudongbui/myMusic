@@ -28,6 +28,7 @@ import jp.wasabeef.picasso.transformations.CropSquareTransformation;
 
 public class TopSongAdapter extends RecyclerView.Adapter<TopSongAdapter.TopSongViewHolder> {
     List<TopSongModel> topSongModels = new ArrayList<>();
+    String urlSong;
 
     public TopSongAdapter(List<TopSongModel> topSongModels) {
         this.topSongModels = topSongModels;
@@ -74,7 +75,7 @@ public class TopSongAdapter extends RecyclerView.Adapter<TopSongAdapter.TopSongV
                     .into(ivTopSong);
             tvSong.setText(topSongModel.song);
             tvArtist.setText(topSongModel.artist);
-
+//            urlSong.toString(topSongModel.url);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -11,11 +11,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.owner.myMuzic.R;
 import com.example.owner.myMuzic.databasees.TopSongModel;
 import com.example.owner.myMuzic.events.OnClickTopSong;
 import com.example.owner.myMuzic.utils.MusicHandle;
+import com.example.owner.myMuzic.utils.Utils;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
@@ -97,6 +99,7 @@ public class PlayFragment extends Fragment {
                 .transform(new CropCircleTransformation())
                 .into(ivBigpic);
         MusicHandle.updateRealtimeUI(seekBar,fbPlay11,tvMinStart,tvMinFinish,ivBigpic);
+
     }
 
     @OnClick({R.id.iv_back1, R.id.iv_download1, R.id.iv_next_left, R.id.fb_play11, R.id.iv_next_right})
@@ -106,6 +109,8 @@ public class PlayFragment extends Fragment {
                 getActivity().onBackPressed();
                 break;
             case R.id.iv_download1:
+                Toast.makeText(getContext(), "waiting...", Toast.LENGTH_LONG).show();
+                MusicHandle.downloadSong(topSongModel, getContext());
                 break;
             case R.id.iv_next_left:
                 break;
